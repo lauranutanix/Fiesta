@@ -1,0 +1,37 @@
+The config file should point to the correct environment variables as especified in the .env file
+Below are two examples using MySQL and MS SQL. No comments are allowed in JSON files so ensure it looks 
+clean just like below 
+
+Supported dialects: mssql, mariadb, mysql, postgres, and sqlite
+
+CONFIG Example 1: MySQL DB
+---------------------------------------------------------------
+{
+  "development": {
+    "database": "FiestaDB",
+    "username": "root",
+    "password": "password",
+    "host": "x.x.x.x",
+    "port": "3306",
+    "dialect": "mysql"
+  }
+}
+
+
+CONFIG Example 2: Microsoft SQL DB
+---------------------------------------------------------------
+{
+ "development": {
+    "database": "FiestaDB",
+    "username": "fiestaAdmin",
+    "password": "password",
+    "host": "x.x.x.x",
+    "port": "1433",
+    "dialect": "mssql"
+  }
+}
+
+
+
+
+

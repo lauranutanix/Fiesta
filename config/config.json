@@ -1,0 +1,10 @@
+{
+  "development": {
+    "database": "FiestaDB",
+    "username": "root",
+    "password": "password",
+    "host": "",
+    "port": "3306",
+    "dialect": "mysql"
+  }
+}
