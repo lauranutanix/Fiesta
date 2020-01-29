@@ -6,7 +6,7 @@ Supported dialects: mssql, mariadb, mysql, postgres, and sqlite
 
 CONFIG Example 1: MySQL DB
 ---------------------------------------------------------------
-{
+module.exports = {
   "development": {
     "database": "FiestaDB",
     "username": "root",
@@ -20,7 +20,7 @@ CONFIG Example 1: MySQL DB
 
 CONFIG Example 2: Microsoft SQL DB
 ---------------------------------------------------------------
-{
+module.exports = {
  "development": {
     "database": "FiestaDB",
     "username": "fiestaAdmin",

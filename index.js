@@ -45,7 +45,10 @@ require("./routes/api-product-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function( info ) {
+  console.log(info.dialect.dialect)
+  //db.sequelize.connectionManager.dialect.MysqlDialect
+  //
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
