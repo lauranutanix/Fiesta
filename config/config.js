@@ -3,7 +3,7 @@ module.exports = {
       "database": "FiestaDB",
       "username": "root",
       "password": "nutanix/4u",
-      "host": "10.45.100.136",
+      "host": "localhost",
       "port": "3306",
       "dialect": "mysql"
     }
