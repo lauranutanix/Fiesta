@@ -2,8 +2,8 @@
   "development": {
     "database": "FiestaDB",
     "username": "root",
-    "password": "password",
-    "host": "",
+    "password": "db_passwd",
+    "host": "localhost",
     "port": "3306",
     "dialect": "mysql"
   }

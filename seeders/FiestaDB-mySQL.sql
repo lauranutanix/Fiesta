@@ -18,9 +18,9 @@ CREATE TABLE Products (
   product_image_url text COLLATE utf8mb4_general_ci NOT NULL,
   product_comment varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
-/*Dumping data for table `products`*/
+/*Dumping data for table Products*/
 INSERT INTO Products (product_name,product_price,product_image_url,product_comment) VALUES ('Single Banquet Chair Cover',2.99,'https://cdn.shopify.com/s/files/1/1832/6341/products/SASH_71_046_D04_0a16a508-5cd5-422f-ab7d-45acee11f6d1_1000x.jpg?v=1571323936','Vendor in on Wednesdays only.');
 INSERT INTO Products (product_name,product_price,product_image_url,product_comment) VALUES ('12 large ballons',2.30,'https://cdn.shopify.com/s/files/1/1832/6341/products/BLOON_MET_GOLD__01_1000x.jpg?v=1571327220','On back order');
 INSERT INTO Products (product_name,product_price,product_image_url,product_comment) VALUES ('90x132 Rectangle Table Cloth',24.50,'https://cdn.shopify.com/s/files/1/1832/6341/products/TAB_02_5454_SILV__02_7bb66485-2943-489e-a7c7-8d3f2d810fc5.progressive.jpg?v=1571325198','Table cloth quality issues. Need to talk to vendor.');
@@ -32,7 +32,7 @@ INSERT INTO Products (product_name,product_price,product_image_url,product_comme
 INSERT INTO Products (product_name,product_price,product_image_url,product_comment) VALUES ('10 Champagne Flutes',4.50,'https://cdn.shopify.com/s/files/1/1832/6341/products/PLST_CU0071_GOLD_1000x.jpg?v=1571325883','Place an order with vendor of 24 packets by next Saturday.');
 INSERT INTO Products (product_name,product_price,product_image_url,product_comment) VALUES ('Confetti Squares',3.99,'https://cdn.shopify.com/s/files/1/1832/6341/products/BOTT_GLIT_002_GOLD__02_1000x.jpg?v=1571327289','On back order.');
 
-/*Table structure for table `stores`*/
+/*Table structure for table Stores*/
 DROP TABLE IF EXISTS Stores;
 CREATE TABLE Stores (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -42,13 +42,13 @@ CREATE TABLE Stores (
   PRIMARY KEY (id)
 );
 
-/* Dumping data for table `stores`*/
+/* Dumping data for table Stores*/
 INSERT INTO Stores (store_name,store_city,store_state) VALUES ('Party Xtravaganza','Durham','NC');
 INSERT INTO Stores (store_name,store_city,store_state) VALUES ('Party Xperience','San Jose','CA');
 INSERT INTO Stores (store_name,store_city,store_state) VALUES ('Party with Us','New York','NY');
 INSERT INTO Stores (store_name,store_city,store_state) VALUES ('IneXpensive Party','Northboro','Iowa');
 
-/* Table structure for table `inventory` */
+/* Table structure for table inventory */
 DROP TABLE IF EXISTS InventoryRecords;
 CREATE TABLE InventoryRecords (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -63,7 +63,7 @@ CREATE TABLE InventoryRecords (
 ); 
 
 
-/* Dumping data for table `inventory`*/
+/* Dumping data for table inventory*/
 INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quantity,local_price,comment) VALUES (2,'Single Banquet Chair Cover',1,'Party Xtravaganza',30,4.05,'These chair cover sell a lot in beige and dont sell enough in other colors. ');
 INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quantity,local_price,comment) VALUES (3,'90x132 Rectangle Table Cloth',1,'Party Xtravaganza',100,29.99,'');
 INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quantity,local_price,comment) VALUES (5,'5 Pack Linen Napkins',1,'Party Xtravaganza',10,6.99,'The best napkins, believe me. ');
