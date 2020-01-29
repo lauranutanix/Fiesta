@@ -34,7 +34,7 @@ class App extends Component {
     axios.get('/api/stores')
       .then(response => {
         this.setState({ stores: response.data });
-        console.log(this.state);
+        // console.log(this.state);
       })
       .catch(e => {
         console.log(e);
@@ -43,7 +43,7 @@ class App extends Component {
     axios.get('/api/products')
       .then(response => {
         this.setState({ products: response.data });
-        console.log(this.state);
+        // console.log(this.state);
       })
       .catch(e => {
         console.log(e);
@@ -52,7 +52,7 @@ class App extends Component {
     axios.get('/api/inventory')
       .then(response => {
         this.setState({ inventory: response.data });
-        console.log(this.state);
+        // console.log(this.state);
       })
       .catch(e => {
         console.log(e);
