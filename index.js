@@ -7,6 +7,7 @@
 // =============================================================
 const express = require("express");
 const  cors = require("cors");
+const path = require("path");
 const connectHistoryApiFallback = require('connect-history-api-fallback');
 // const bodyParser = require('body-parser');
 const db = require("./models"); // Requiring our models for syncing to DB
@@ -23,8 +24,9 @@ app.use(connectHistoryApiFallback({
 
 // static files and folders must be set after connectHistoryApiFallback
 if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
+  // app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, '/client/build')));
+} 
 
 // Static directory
 app.use(express.static("public"));
