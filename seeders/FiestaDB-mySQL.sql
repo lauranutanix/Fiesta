@@ -54,7 +54,7 @@ CREATE TABLE InventoryRecords (
   product_name varchar(255) NOT NULL,
   store_id int(11) NOT NULL,
   store_name varchar(255) NOT NULL,
-  quantity int(11) DEFAULT '0',
+  quantity int(11) DEFAULT '0' NOT NULL,
   local_price decimal(5,2) NOT NULL,
   comment text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (id)
