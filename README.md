@@ -28,7 +28,7 @@ npm run build
 ```
 ## Database info
 ```
-The database shema and same data the app expects are described in the following files:
+The database schemas and sample data the app expects are described in the following files:
 FiestaDB-MSSQL.sql
 FiestaDB-mySL.sql
 ```
