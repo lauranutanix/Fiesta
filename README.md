@@ -26,7 +26,12 @@ cd ~/Fiesta/client
 npm install
 npm run build
 ```
-
+## Database info
+```
+The database schemas and sample data the app expects are described in the following files:
+~/Fiesta/seeders/FiestaDB-MSSQL.sql
+~/Fiesta/seeders/FiestaDB-mySL.sql
+```
 ## Run App
 ```
 cd ~/Fiesta
