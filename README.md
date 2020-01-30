@@ -32,3 +32,8 @@ npm run build
 cd ~/Fiesta
 npm start
 ```
+
+## Access App
+```
+http//:localhost:3001
+```
