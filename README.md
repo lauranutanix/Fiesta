@@ -20,6 +20,6 @@ cd ~/Fiesta/client
 npm install
 npm run build
 
-### Run App
+## Run App
 cd ~/Fiesta
 npm start
