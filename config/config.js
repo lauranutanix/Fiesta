@@ -3,19 +3,19 @@
 
 module.exports = {
     "development": {
-      "database": process.env.DATABASENAME,
-      "username": process.env.USERNAME,
-      "password": process.env.PASSWORD,
-      "host":  process.env.HOSTNAME,
-      "port":  process.env.PORT,
+      "database": "FiestaDB",
+      "username": "root",
+      "password": "db_passwd",
+      "host":  "localhost",
+      "port":  "3306",
       "dialect": 'mysql'
     },
     "production": {
-        "database": process.env.DATABASENAME,
-        "username": process.env.USERNAME,
-        "password": process.env.PASSWORD,
-        "host":  process.env.HOSTNAME,
-        "port":  process.env.PORT,
+        "database": "FiestaDB",
+        "username": "root",
+        "password": "db_passwd",
+        "host":  "localhost",
+        "port":  "3306",
         "dialect": 'mysql'
       }
 }
