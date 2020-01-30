@@ -6,20 +6,29 @@ Fiesta is a very simple inventory system app that tracks inventory across multip
 ## Installation: 
 
 ### Make sure node is Installed on the machine
-To check: node --version
+To check:
+```
+node --version
+```
 To install:
+```
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 sudo yum install -y nodejs
 node --version
+```
 
 ### Clone Repo and install dependencies
+```
 git clone https://github.com/sharonpamela/Fiesta.git
 cd ~/Fiesta
 npm install
 cd ~/Fiesta/client
 npm install
 npm run build
+```
 
 ## Run App
+```
 cd ~/Fiesta
 npm start
+```
