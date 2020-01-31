@@ -12,7 +12,7 @@ USE FiestaDB;
 /*Table structure for table Products*/
 DROP TABLE IF EXISTS Products;
 CREATE TABLE Products (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   product_name varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   product_price decimal(5,2) NOT NULL,
   product_image_url text COLLATE utf8mb4_general_ci NOT NULL,
@@ -34,7 +34,7 @@ INSERT INTO Products (product_name,product_price,product_image_url,product_comme
 /*Table structure for table Stores*/
 DROP TABLE IF EXISTS Stores;
 CREATE TABLE Stores (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   store_name varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   store_city varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   store_state varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
@@ -49,12 +49,12 @@ INSERT INTO Stores (store_name,store_city,store_state) VALUES ('IneXpensive Part
 /* Table structure for table InventoryRecords */
 DROP TABLE IF EXISTS InventoryRecords;
 CREATE TABLE InventoryRecords (
-  id int(11) NOT NULL AUTO_INCREMENT,
-  product_id int(11) NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
+  product_id int NOT NULL,
   product_name varchar(255) NOT NULL,
-  store_id int(11) NOT NULL,
+  store_id int NOT NULL,
   store_name varchar(255) NOT NULL,
-  quantity int(11) DEFAULT '0' NOT NULL,
+  quantity int DEFAULT '0' NOT NULL,
   local_price decimal(5,2) NOT NULL,
   comment text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (id)
@@ -84,4 +84,3 @@ INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quanti
 INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quantity,local_price,comment) VALUES (7,'21 FT Table Skirt',3,'Party with Us',100,0.00,'');
 INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quantity,local_price,comment) VALUES (8,'Pretty Flowers Center Piece',3,'Party with Us',3,25.99,'If not sold within first 24 hrs. Advertize as 50% off.');
 INSERT INTO InventoryRecords (product_id,product_name,store_id,store_name,quantity,local_price,comment) VALUES (9,'10 Champagne Flutes',3,'Party with Us',87,5.99,'Clear Plastic');
-
