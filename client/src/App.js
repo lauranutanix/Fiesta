@@ -26,7 +26,8 @@ class App extends Component {
     this.state = {
       stores: [],
       products: [],
-      inventory: []
+      inventory: [],
+      selectedDialect:'REPLACE_DIALECT'
     };
     this.handleDeleteStore = this.handleDeleteStore.bind(this);
   }
@@ -140,7 +141,7 @@ class App extends Component {
           <Route exact path='/inventory/add' component={AddNewInventory} />
           <Route exact path='/inventory/:inventoryId/:storeId' component={UpdateInventoryProduct} />
         </Switch>
-        <Footer />
+        <Footer selectedDialect={this.state.selectedDialect}/>
       </Router>
     );
   }
