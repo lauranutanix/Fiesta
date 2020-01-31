@@ -59,8 +59,14 @@ class App extends Component {
       .catch(e => {
         console.log(e);
       });
+      axios.get('/api/version')
+      .then(response => {
+        this.setState({ selectedDialect: response.data });
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
-
 
   handleDeleteStore = (id) => {
     swal({

@@ -41,7 +41,7 @@ app.use(express.json());
 require("./routes/api-store-routes.js")(app);
 require("./routes/api-inventory-routes.js")(app);
 require("./routes/api-product-routes.js")(app);
-
+require("./routes/api-version.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
