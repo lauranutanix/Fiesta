@@ -31,7 +31,6 @@ class App extends Component {
     };
     this.handleDeleteStore = this.handleDeleteStore.bind(this);
     this.handleDeleteProduct= this.handleDeleteProduct.bind(this);
-    this.handleUpdateFooter = this.handleUpdateFooter.bind(this);
   }
   componentDidMount() {
     axios.get('/api/stores')
@@ -60,13 +59,8 @@ class App extends Component {
       .catch(e => {
         console.log(e);
       });
-
-    this.handleUpdateFooter('REPLACE_DIALECT');
   }
 
-  handleUpdateFooter = (dialect) => {
-    this.setState({ selectedDialect: dialect});
-  }
 
   handleDeleteStore = (id) => {
     swal({

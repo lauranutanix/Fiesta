@@ -4,7 +4,6 @@ import './style.css';
 
 class Stores extends Component {
     render() {
-        console.log( this.props.stores)
         let stores = this.props.stores.map(store => (
             <div key={store.id} className="stores_row">
                 <div className="stores_col">{store.store_name}</div>
