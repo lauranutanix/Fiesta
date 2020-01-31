@@ -27,9 +27,11 @@ class App extends Component {
       stores: [],
       products: [],
       inventory: [],
-      selectedDialect:'REPLACE_DIALECT'
+      selectedDialect:''
     };
     this.handleDeleteStore = this.handleDeleteStore.bind(this);
+    this.handleDeleteProduct= this.handleDeleteProduct.bind(this);
+    this.handleUpdateFooter = this.handleUpdateFooter.bind(this);
   }
   componentDidMount() {
     axios.get('/api/stores')
@@ -58,6 +60,12 @@ class App extends Component {
       .catch(e => {
         console.log(e);
       });
+
+    this.handleUpdateFooter('REPLACE_DIALECT');
+  }
+
+  handleUpdateFooter = (dialect) => {
+    this.setState({ selectedDialect: dialect});
   }
 
   handleDeleteStore = (id) => {
@@ -93,7 +101,6 @@ class App extends Component {
   }
 
   handleDeleteProduct = (id) => {
-    console.log(id)
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this product's records! but you can always re-create it by adding a new product.",
