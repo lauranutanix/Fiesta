@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import swal from 'sweetalert';
 
 // import containers
@@ -136,19 +136,25 @@ class App extends Component {
     return (
       <Router>
         <Nav />
-        <Switch>
-          <Route exact path='/' component={Dashboard} />
-          <Route exact path='/stores' render={() => <Stores stores={this.state.stores} handleDeleteStore={this.handleDeleteStore} />} />
-          <Route exact path='/stores/add' component={AddNewStore} />
-          <Route exact path='/stores/products/:storeId' component={ViewStoreDetails} />
-          <Route exact path='/products' render={() => <Products products={this.state.products} handleDeleteProduct={this.handleDeleteProduct} />} />
-          <Route exact path='/products/add' component={AddNewProduct} />
-          <Route exact path='/products/add/:storeName/:storeId' component={AddProductToStore} />
-          <Route exact path='/inventory' render={() => <Inventory inventory={this.state.inventory} />} />
-          <Route exact path='/inventory/add' component={AddNewInventory} />
-          <Route exact path='/inventory/:inventoryId/:storeId' component={UpdateInventoryProduct} />
-        </Switch>
-        <Footer selectedDialect={this.state.selectedDialect}/>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route
+            path="/stores"
+            element={<Stores stores={this.state.stores} handleDeleteStore={this.handleDeleteStore} />}
+          />
+          <Route path="/stores/add" element={<AddNewStore />} />
+          <Route path="/stores/products/:storeId" element={<ViewStoreDetails />} />
+          <Route
+            path="/products"
+            element={<Products products={this.state.products} handleDeleteProduct={this.handleDeleteProduct} />}
+          />
+          <Route path="/products/add" element={<AddNewProduct />} />
+          <Route path="/products/add/:storeName/:storeId" element={<AddProductToStore />} />
+          <Route path="/inventory" element={<Inventory inventory={this.state.inventory} />} />
+          <Route path="/inventory/add" element={<AddNewInventory />} />
+          <Route path="/inventory/:inventoryId/:storeId" element={<UpdateInventoryProduct />} />
+        </Routes>
+        <Footer selectedDialect={this.state.selectedDialect} />
       </Router>
     );
   }
