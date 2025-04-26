@@ -25,7 +25,7 @@ const Footer = props => {
     }
     return (
         <footer className="footer-content">
-            <p className="copy-right">© Nutanix 2020</p>
+            <p className="copy-right">© Nutanix 2025</p>
             <p className="copy-right">{displayed_dialect}</p>
         </footer>
     )
