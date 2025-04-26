@@ -1,38 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from 'axios';
 import './style.css';
 
-const UpdateInventoryProduct = () => {
-    const { inventoryId } = useParams();
-    const { storeId } = useParams();
-    const [productName, setProductName] = useState('');
-    const [productPrice, setProductPrice] = useState('');
-    const [productQty, setProductQty] = useState('');
-    const [productComment, setProductComment] = useState('');
+class UpdateInventoryProduct extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            inventory_id: '',
+            store_id:'',
+            product_name: '',
+            product_price: '',
+            product_qty: '',
+            product_comment: ''
+        }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.isValidFloat = this.isValidFloat.bind(this);
+    }
 
-    useEffect(() => {
-        const handleInputChange = async() => {
-            const response = await axios.get(`/api/inventory/${inventoryId}`);
-            setProductName(response.data.product_name);
-            setProductPrice(response.data.local_price);
-            setProductQty(response.data.quantity);
-            setProductComment(response.data.comment);
-        }; 
-        handleInputChange();
-    }, [inventoryId]);
+    componentDidMount() {
+        const { inventoryId } = this.props.match.params;
+        const { storeId } = this.props.match.params;
+        this.setState({ inventory_id: inventoryId, store_id: storeId });
+        // retrive current product inventory data to pre-fill the form
+        axios.get(`/api/inventory/${inventoryId}`)
+            .then(response => {
+                this.setState({
+                    product_name: response.data.product_name,
+                    product_price: response.data.local_price,
+                    product_qty: response.data.quantity,
+                    product_comment: response.data.comment
+                });
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
 
-        const isValidFloat = (num) => {
-            let regex = /^\d*\.?\d*$/;
-            if (regex.test(num)) {
-                return true;
-            }
-            return false;
-        };
+    handleInputChange(e) {
+        let value = e.target.value;
+        let name = e.target.name;
+        this.setState(prevState => ({
+            ...prevState, [name]: value
+        }), () => console.log(this.state))
+    }
 
+    isValidFloat(num) {
+        let regex = /^\d*\.?\d*$/;
+        if (regex.test(num)) {
+            return true;
+        }
+        return false;
+    }
 
-    const handleSubmit = async event => {
+    handleSubmit = async event => {
         event.preventDefault();
 
         let inventory_id = this.state.inventory_id;
@@ -45,7 +67,7 @@ const UpdateInventoryProduct = () => {
             swal("Oops!", "Product Name is a required field.", "error");
         } else if (product_price === '') {
             swal("Oops!", "Product Price is a required field.", "error");
-        } else if (isValidFloat(product_price) === false) {
+        } else if (this.isValidFloat(product_price) === false) {
             swal("Oops!", "Enter a Valid Product Price. Example: 0.00", "error");
         } else if (product_qty === '') {
             swal("Oops!", "Product Qty is a required field.", "error");
@@ -58,7 +80,7 @@ const UpdateInventoryProduct = () => {
                 if (product_insert_response.status === 200) {
                     swal("Success!", "The product has been updated!", "info")
                     .then((value) => {
-                        window.location.href = `/stores/products/${storeId}`
+                        window.location.href = `/stores/products/${this.state.store_id}`
                     })
                 }
             } catch (e) {
@@ -66,13 +88,14 @@ const UpdateInventoryProduct = () => {
                 swal("Oops!", "Something went wrong adding this product.", "error"); // adding product to inventory depends on a successful product creation first
             }
         }
+    }
 
-
+    render() {
         return (
             <div className="wrapper">
                 <form className="container-fluid" encType="multipart/form-data">
                     <h2 className="header">Update Product</h2>
-                    <h3>Product Name: {productName}</h3>
+                    <h3>Product Name: {this.state.product_name}</h3>
                     <div className="add_row">
                         <label>Product Price  (*):</label>
                         <input
@@ -80,8 +103,8 @@ const UpdateInventoryProduct = () => {
                             id="product_price"
                             className="form-control"
                             name={"product_price"}
-                            onChange={(e) => handleInputChange(e)}
-                            value={productPrice || '0.00'}
+                            onChange={(e) => this.handleInputChange(e)}
+                            value={this.state.product_price || '0.00'}
                             required
                         />
                     </div>
@@ -92,8 +115,8 @@ const UpdateInventoryProduct = () => {
                             id="product_qty"
                             className="form-control"
                             name={"product_qty"}
-                            onChange={(e) => handleInputChange(e)}
-                            value={productQty || ''}
+                            onChange={(e) => this.handleInputChange(e)}
+                            value={this.state.product_qty || ''}
                             required
                         />
                     </div>
@@ -104,12 +127,12 @@ const UpdateInventoryProduct = () => {
                             id="product_comment"
                             className="form-control"
                             name="product_comment"
-                            onChange={(e) => handleInputChange(e)}
-                            value={productComment || ''}
+                            onChange={(e) => this.handleInputChange(e)}
+                            value={this.state.product_comment || ''}
                         />
                     </div>
                     <div className="add_store_action_btn_block">
-                        <button onClick={handleSubmit} className="btn btn-outline-primary action_btn">Submit</button>
+                        <button onClick={this.handleSubmit} className="btn btn-outline-primary action_btn">Submit</button>
                         <Link to={`/stores/products/${this.state.store_id}`}><button className="btn btn-outline-danger action_btn">Cancel</button></Link>
                     </div>
                 </form>
@@ -117,6 +140,7 @@ const UpdateInventoryProduct = () => {
         )
     }
 }
+
 export default UpdateInventoryProduct;
 
 
