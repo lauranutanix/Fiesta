@@ -9,6 +9,7 @@ const express = require("express");
 const  cors = require("cors");
 const path = require("path");
 const connectHistoryApiFallback = require('connect-history-api-fallback');
+const config = require(`./config/config.js`);
 // const bodyParser = require('body-parser');
 const db = require("./models"); // Requiring our models for syncing to DB
 
@@ -16,6 +17,19 @@ const db = require("./models"); // Requiring our models for syncing to DB
 // =============================================================
 const app = express();
 const PORT = process.env.PORT || 3001;
+const {
+  DB_DIALECT,
+  DB_USER_NAME,
+  DB_PASSWORD,
+  DB_HOST_ADDRESS,
+  DB_NAME
+} = config;
+
+const connectionString = `${DB_DIALECT}://${DB_HOST_ADDRESS}/${DB_NAME}`;
+
+app.get('/api/db-connection', (req, res) => {
+  res.json({ connectionString });
+});
 
 // include so that it defaults to "/" upon refresh if unknown page
 app.use(connectHistoryApiFallback({
