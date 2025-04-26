@@ -10,5 +10,5 @@ bash install_mysql.sh
 
 2. Configure DB
 ```
-bash configure_db.sh
+bash configuredb.sh
 ```
